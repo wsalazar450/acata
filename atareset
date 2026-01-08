@@ -1,0 +1,15 @@
+---
+- name: Reboot AudioCodes MP-124 via HTTP
+  hosts: audiocodes
+  gather_facts: no
+
+  tasks:
+    - name: Send reboot command via HTTP
+      uri:
+        url: "http://{{ inventory_hostname }}/WebAdmin/Reboot"
+        method: POST
+        user: "{{ audiocodes_user }}"
+        password: "{{ audiocodes_password }}"
+        force_basic_auth: yes
+        status_code: 200
+        validate_certs: no
