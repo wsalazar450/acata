@@ -1,6 +1,7 @@
 - name: Reboot AudioCodes MP-124 via HTTPS
   hosts: all
   gather_facts: no
+  connection: local
 
   tasks:
     - name: Send reboot command via HTTPS
