@@ -6,7 +6,7 @@
   tasks:
     - name: Send reboot command via HTTP
       uri:
-        url: "http://{{ inventory_hostname }}/WebAdmin/Reboot"
+        url: "https://{{ inventory_hostname }}/WebAdmin/Reboot"
         method: POST
         user: "{{ username }}"
         password: "{{ password }}"
