@@ -1,6 +1,6 @@
 ---
 - name: Reboot AudioCodes MP-124 via HTTP
-  hosts: audiocodes
+  hosts: all
   gather_facts: no
 
   tasks:
