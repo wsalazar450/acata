@@ -1,15 +1,19 @@
----
-- name: Reboot AudioCodes MP-124 via HTTP
+- name: Reboot AudioCodes MP-124 via HTTPS
   hosts: all
   gather_facts: no
 
   tasks:
-    - name: Send reboot command via HTTP
-      uri:
-        url: "https://{{ inventory_hostname }}/WebAdmin/Reboot"
+    - name: Send reboot command via HTTPS
+      ansible.builtin.uri:
+        url: "https://{{ inventory_hostname }}/WebAdmin/maintenance.cgi"
         method: POST
         user: "{{ username }}"
         password: "{{ password }}"
         force_basic_auth: yes
-        status_code: 200
         validate_certs: no
+        headers:
+          Content-Type: application/x-www-form-urlencoded
+        body: "command=reset"
+        status_code:
+          - 200
+          - 302
